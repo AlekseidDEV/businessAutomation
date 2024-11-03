@@ -1,0 +1,61 @@
+@import "components/baseBtn.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    src: url("../fonts/Circe-Regular.ttf");
+    font-family: 'Circe';
+    font-weight: 400;
+}
+
+@font-face {
+    src: url("../fonts/Circe-Bold.ttf");
+    font-family: 'Circe';
+    font-weight: 700;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Circe';
+}
+
+.container{
+    max-width: 1130px;
+    width: 100%;
+    margin: auto;
+    padding: 0 10px;
+}
+
+h1,h2,h3{
+    color: #2B2B2B;
+}
+
+.title-dot::after, .title-dot::before{
+    position: absolute;
+    content: '';
+    width: 6.58px;
+    height: 6.58px;
+    background: #FE5F5F;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+.title-dot::before{
+    left: -15px;
+}
+.title-dot::after{
+    right: -15px;
+}
+
+@media (max-width: 414px) {
+    .title-dot::after, .title-dot::before{
+        width: 4.58px;
+        height: 4.58px;
+    }
+}
