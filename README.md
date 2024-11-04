@@ -19,6 +19,7 @@ npm run build
 ```
 npm run lint
 ```
+### Данные для входа:
+Логин: alexDev@gmail.com
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Пароль: dev123456
