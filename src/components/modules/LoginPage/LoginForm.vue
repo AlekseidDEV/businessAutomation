@@ -1,15 +1,19 @@
 <script setup>
 import BaseForm from "@/components/widget/BaseForm.vue";
+
 import {loginUser} from "@/core/api/loginUser";
-import {ref} from "vue";
 import {useRouter} from "vue-router";
+
 import mainStore from "@/core/stores";
+
+import {ref} from "vue";
 
 const router = useRouter()
 const store = mainStore
 
 const phone = ref('')
 const password = ref('')
+
 const loginFormRef = ref(null)
 
 const isLoad = ref(false)
@@ -18,11 +22,11 @@ const errorText = ref('')
 
 const sendForm = () => {
   if (loginFormRef.value.isError()) return
-
   isLoad.value = true
 
-  loginUser(phone.value, password.value)
+  loginUser(phone.value, password.value, 200)
       .then((data) => {
+        isLoad.value = false
         isFailure.value = !data.succes ? true : false
         errorText.value = data.message
 
@@ -32,14 +36,12 @@ const sendForm = () => {
         }
       })
       .catch((error) => {
+        isLoad.value = false
         isFailure.value = true
         errorText.value = error.message
-        console.error(error)
-      })
-      .finally(() => {
-        isLoad.value = false
       })
 }
+
 </script>
 
 <template>
@@ -55,11 +57,10 @@ const sendForm = () => {
         ref="loginFormRef"
         v-model:phone="phone"
         v-model:password="password"
-        :is-load="isLoad"
         class="px-5 sm:px-20"
+        :is-load="isLoad"
         :error-text="errorText"
         :is-error-form="isFailure"
-        @click="isFailure = false"
         @submit.prevent="sendForm"
       />
       <div

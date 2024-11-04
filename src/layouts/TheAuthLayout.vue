@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="layout-auth__wrapper">
     <div class="container">
       <p class="pt-5 font-bold text-xl">
         <router-link

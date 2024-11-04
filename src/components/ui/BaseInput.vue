@@ -1,6 +1,8 @@
 <script setup>
 
-defineProps({
+import {computed} from "vue";
+
+const props = defineProps({
   label: {
     type: String,
     required: false,
@@ -32,13 +34,17 @@ const emits  = defineEmits(['on-input'])
 
 const model = defineModel()
 
+const isError = computed(() => {
+  return props.error ? 'border-red-400' : 'border-gray-200'
+})
+
 const changeValueInput = (e) => {
   emits('on-input', e.target.value)
 }
 </script>
 
 <template>
-  <label>
+  <label class="base-input">
     <p
       v-if="label"
       class="pl-2 mb-0.5 text-gray-500"
@@ -46,7 +52,7 @@ const changeValueInput = (e) => {
     <input
       v-model="model"
       class="py-3 pl-2 border-2 rounded-2xl outline-none w-full"
-      :class="error ? 'border-red-400' : 'border-gray-400'"
+      :class="isError"
       :placeholder="placeholder"
       :type="type || 'text'"
       autocomplete="on"

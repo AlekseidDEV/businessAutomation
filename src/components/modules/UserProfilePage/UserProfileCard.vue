@@ -17,7 +17,7 @@
           Рудыко Алексей Алексеевич
         </h1>
         <p class="underline">
-          Fronted vue developer
+          Fronted developer
         </p>
 
         <div class="mt-5">

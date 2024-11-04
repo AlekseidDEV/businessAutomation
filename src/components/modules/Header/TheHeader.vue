@@ -6,8 +6,14 @@ import BaseIcon from "@/components/ui/BaseIcon.vue";
 import {useRouter} from "vue-router";
 import mainStore from "@/core/stores";
 
+import {computed} from "vue";
+
 const router = useRouter()
 const userRole = mainStore.userRole
+
+const routerPath = computed(() => {
+  return userRole === 'guest' ? {name: 'login-page'} : {name: 'profile-page'}
+})
 </script>
 
 <template>
@@ -17,7 +23,7 @@ const userRole = mainStore.userRole
         <BaseBtn
           class="px-3.5 py-2 text-base"
           color-btn="red-btn"
-          @click="router.push({name: userRole === 'guest' ? 'login-page' : 'profile-page'})"
+          @click="router.push(routerPath)"
         >
           Личный кабинет
         </BaseBtn>

@@ -5,9 +5,9 @@ import BaseBtn from "@/components/ui/BaseBtn.vue";
 
 import {regexpKit, validateByRegexp} from "@/utils/validateRegexp";
 
-import {ref} from "vue";
+import {ref, watch} from "vue";
 
-defineProps({
+const props = defineProps({
   isLoad: {
     type: Boolean,
     required: true,
@@ -27,6 +27,8 @@ defineProps({
 
 const emailModel = defineModel('phone')
 const passwordModel = defineModel('password')
+
+const errorForm = ref(false)
 
 const emailHasError = ref(false)
 const passwordHasError = ref(false)
@@ -53,6 +55,16 @@ const isError = () => {
   return !(!isValidate && isNullValue)
 }
 
+const changeStateForm = () => {
+  if(errorForm.value){
+    errorForm.value = false
+  }
+}
+
+watch(() => props.isErrorForm, (newValue) => {
+  errorForm.value = newValue
+})
+
 defineExpose({
   isError
 })
@@ -68,21 +80,23 @@ defineExpose({
         placeholder="Example: john@mail.su"
         label="Email"
         type="email"
-        :error="emailHasError || isErrorForm"
-        :error-message="isErrorForm ? '' : 'ошибка заполнения'"
+        :error="emailHasError || errorForm"
+        :error-message="errorForm ? '' : 'ошибка заполнения'"
         @on-input="validateEmail"
+        @click="changeStateForm"
       />
       <BaseInput
         v-model="passwordModel"
         placeholder="введите пароль"
         label="Пароль"
         type="password"
-        :error="passwordHasError || isErrorForm"
-        :error-message="isErrorForm ? '' : 'ошибка заполнения'"
+        :error="passwordHasError || errorForm"
+        :error-message="errorForm ? '' : 'ошибка заполнения'"
         @on-input="validatePassword"
+        @click="changeStateForm"
       />
       <p
-        v-if="isErrorForm"
+        v-if="errorForm"
         class="text-red-400 text-center"
       >
         {{ errorText }}

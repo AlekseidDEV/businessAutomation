@@ -2,6 +2,7 @@
 
 import BaseLogo from "@/components/ui/BaseLogo.vue";
 import BaseIcon from "@/components/ui/BaseIcon.vue";
+
 import {useRouter} from "vue-router";
 import mainStore from "@/core/stores";
 
@@ -20,7 +21,7 @@ const logout = () => {
     <div class="container flex items-center gap-5 justify-between">
       <BaseLogo />
       <p
-        class="text-lg font-bold flex items-center gap-2"
+        class="text-lg font-bold flex items-center gap-2 cursor-pointer"
         @click="logout"
       >
         Выйти
