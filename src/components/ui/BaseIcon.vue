@@ -27,13 +27,13 @@ import {computed, defineAsyncComponent} from "vue";
 </script>
 
 <template>
-  <i class="base-icon">
+  <span class="base-icon">
     <component
       :is="dynamicComponent"
       :size="sizeIcon"
       :color="colorIcon"
     />
-  </i>
+  </span>
 </template>
 
 <style scoped>
