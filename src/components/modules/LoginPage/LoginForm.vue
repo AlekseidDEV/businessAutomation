@@ -24,7 +24,7 @@ const sendForm = () => {
   if (loginFormRef.value.isError()) return
   isLoad.value = true
 
-  loginUser(phone.value, password.value, 200)
+  loginUser(phone.value, password.value, 201)
       .then((data) => {
         isLoad.value = false
         isFailure.value = !data.succes ? true : false

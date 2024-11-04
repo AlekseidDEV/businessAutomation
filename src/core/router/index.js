@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import MainPage from "@/pages/MainPage.vue";
 import TheMainLayout from "@/layouts/TheMainLayout.vue";
 import LoginPage from "@/pages/Auth/LoginPage.vue";
-import UserProfilePage from "@/pages/user/UserProfilePage.vue";
+import UserProfilePage from "@/pages/User/UserProfilePage.vue";
 import TheAuthLayout from "@/layouts/TheAuthLayout.vue";
 import TheUserLayout from "@/layouts/TheUserLayout.vue";
 
