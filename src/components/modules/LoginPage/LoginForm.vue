@@ -7,6 +7,7 @@ import {useRouter} from "vue-router";
 import mainStore from "@/core/stores";
 
 import {ref} from "vue";
+import BasePreloader from "@/components/ui/BasePreloader.vue";
 
 const router = useRouter()
 const store = mainStore
@@ -63,15 +64,7 @@ const sendForm = () => {
         :is-error-form="isFailure"
         @submit.prevent="sendForm"
       />
-      <div
-        v-if="isLoad"
-        class="preloader rounded-lg flex items-center justify-center"
-      >
-        <img
-          src="/images/loading.gif"
-          alt="preloader"
-        >
-      </div>
+      <BasePreloader v-if="isLoad" />
     </div>
   </div>
 </template>
