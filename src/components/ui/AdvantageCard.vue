@@ -1,8 +1,20 @@
 <script setup>
 defineProps({
-  img: String,
-  title: String,
-  text: String
+  img: {
+    type: String,
+    required: true,
+    default: ''
+  },
+  title: {
+    type: String,
+    required: true,
+    default: ''
+  },
+  text: {
+    type: String,
+    required: true,
+    default: ''
+  },
 })
 </script>
 

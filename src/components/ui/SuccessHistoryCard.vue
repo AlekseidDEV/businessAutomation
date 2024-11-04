@@ -2,17 +2,37 @@
 
 import BaseBtn from "@/components/ui/BaseBtn.vue";
 import BaseIcon from "@/components/ui/BaseIcon.vue";
+import {computed} from "vue";
 
-defineProps({
+const props = defineProps({
   reverseImg: {
     type: Boolean,
     required: false,
     default: false
   },
-  imgPath: String,
-  title: String,
-  quote: String,
-  text: String,
+  imgPath: {
+    type: String,
+    required: true,
+    default: ''
+  },
+  title: {
+    type: String,
+    required: true,
+    default: ''
+  },
+  quote: {
+    type: String,
+    required: true,
+    default: ''
+  },
+  text: {
+    type: [String, null],
+    default: null
+  },
+})
+
+const isReverseImg = computed(() => {
+  return props.reverseImg ? 'flex-row-reverse' : ''
 })
 </script>
 
@@ -20,7 +40,7 @@ defineProps({
   <div class="success-history-card__wrapper max-w-[1000px] w-full">
     <div
       class="flex items-center justify-between gap-4"
-      :class="reverseImg ? 'flex-row-reverse' : ''"
+      :class="isReverseImg"
     >
       <img
         :src="imgPath"
